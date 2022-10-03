@@ -1,0 +1,19 @@
+import random
+N = random.randrange(1,101)
+Usuário = int(input("O número em que o computador pensa é: "))
+tentativas = 1
+
+while Usuário != N:
+    if Usuário < N:
+        print("O número que pensei é maior")
+        Usuário = int(input("O número em que o computador pensa é: "))
+        tentativas = tentativas + 1
+
+    else:
+        print("O número que pensei é menor")
+        Usuário = int(input("O número em que o computador pensa é: "))
+        tentativas = tentativas + 1
+
+
+print("Acertou")
+print("O usuário acertou após ", tentativas ,"tentativas")
