@@ -1,0 +1,24 @@
+import random
+N = int(input("Insira o número:"))
+n=0
+menor = 1
+maior = 101
+i = random.randrange(menor,maior)
+tentativas = 1
+
+while N != i:
+    if i < N:
+        while i < N:
+            T = int(input("O seu número é maior, digite '1' "))
+            menor = i
+            i = random.randrange(menor,maior)
+            tentativas = tentativas + 1
+    elif i > N:
+        while i > N:
+            T = int(input("O seu número é menor, digite '-1' "))
+            maior = i
+            i= random.randrange(menor,maior)
+            tentativas = tentativas + 1
+
+    print("O teu número é", N)
+    print("Acertado em", tentativas ,"tentativas")
