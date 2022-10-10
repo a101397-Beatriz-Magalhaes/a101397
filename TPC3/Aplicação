@@ -1,0 +1,105 @@
+print("Bem vindo(a)! Este é o menu principal! Digita: \n (1) Criar Lista \n (2) Ler Lista \n (3) Soma \n (4) Média \n (5) Maior \n (6) Menor \n (7) estaOrdenada por ordem crescente \n (8) estaOrdenada por ordem decrescente \n (9) Procura um elemento \n (0) Sair")
+lista = []
+variavel_interna = lista
+from operator import index
+import random
+i = 0
+N = int(input("Escolho: "))
+
+if N != 0:
+    if N == 1:
+        variavel_interna.clear()
+        def criarLista(C):
+            while C > 0:
+                num = random.randint(1,101)
+                variavel_interna.append(num)
+                C = C - 1
+            return variavel_interna
+        print(criarLista(100))
+        N = int(input("Escolho: "))    
+    if N == 2:
+        variavel_interna.clear()
+        def LerLista(L):
+            L = float(input("Elementos na lista: "))
+            i = 0
+            while i < L:
+                a = float(input("Elementos na lista: "))
+                variavel_interna.append(a)
+                i = i + 1
+            return variavel_interna
+        print(LerLista(variavel_interna))
+        N = int(input("Escolho: "))
+    if N == 3:
+        def SomaListas(variavel_interna):
+            soma = 0
+            for i in lista:
+                soma = soma + i
+            return soma
+        print(SomaListas(variavel_interna))
+        N = int(input("Escolho: "))
+    if N == 4:
+        def MediaLista(variavel_interna):
+            soma = 0
+            for i in variavel_interna:
+                soma = soma + i
+                media = soma / len(variavel_interna)
+            return media
+        print(MediaLista(variavel_interna))
+        N = int(input("Escolho: "))
+    if N == 5:
+        def Maior(variavel_interna):
+            maior = 0
+            for i in variavel_interna:
+                if i > maior:
+                    maior = i    
+            return maior
+        print(Maior(variavel_interna))
+        N = int(input("Escolho: "))
+    if N == 6:
+        def Menor(variavel_interna):
+            menor = 102
+            for i in variavel_interna:
+                if i < menor:
+                    menor = i
+            return menor
+        print(Menor(variavel_interna))
+        N = int(input("Escolho: "))
+    if N == 7:
+        def Crescente(variavel_interna):
+            maior = variavel_interna[0]
+            var = True or False
+            for i in variavel_interna:
+                if i < maior:
+                    var = False
+                maior = i
+            if var == False:
+                print ("Não, a lista não está por ordem crescente! ")
+            else:
+                print("Sim, a lista está por ordem crescente! ")
+        print(Crescente(variavel_interna))
+        N = int(input("Escolho: "))
+    if N == 8:
+        def Decrescente(variavel_interna):
+            menor = variavel_interna[0]
+            var = True or False
+            for i in variavel_interna:
+                if i > menor:
+                    var = False
+                menor = i
+            if var == False:
+                print("Não, a lista não está por ordem decrescente! ")
+            else:
+                print("Sim, a lista está por ordem decrescente! ")
+        print(Decrescente(variavel_interna))
+        N = int(input("Escolho: "))
+    if N == 9:
+        def EstaNaLista(variavel_interna):
+            P = int(input("Elemento a procurar: "))
+            if P in variavel_interna:
+                print(variavel_interna.index(P))
+            else:
+                print("O elemento não está na lista! ") 
+        print(EstaNaLista(variavel_interna))
+        N = int(input("Escolho: "))
+else:
+    print(variavel_interna)
