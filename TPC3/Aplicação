@@ -101,5 +101,5 @@ if N != 0:
                 print("O elemento não está na lista! ") 
         print(EstaNaLista(variavel_interna))
         N = int(input("Escolho: "))
-else:
-    print(variavel_interna)
+if N == 0:
+    print("Esta é a última lista guardada: " , variavel_interna)
