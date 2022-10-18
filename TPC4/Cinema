@@ -1,0 +1,96 @@
+sala1 = (150, [], "Twillight")
+sala2 = (200, [1,5,7], "Hannibal")
+sala3 = (150, [5, 6, 2, 89, 45], "Avatar")
+sala4 = (200, [2, 5], "Top Gun")
+sala5 = (100, [24, 61, 6, 78, 4, 63, 90], "Minions")
+sala6 = (50, [2,3,4], "Titanic")
+
+cinema1 = (sala1, sala2)
+cinema2 = (sala3, sala4)
+cinema3 = (sala5, sala6)
+
+cinemaTotal = (cinema1, cinema2, cinema3)
+    
+
+def listar(cinema):
+    print("Os filmes em exibiçao são: ")
+    for i in cinema:
+        lotação, ocupados, filme = i
+        print(filme)
+
+def disponivel (cinema, filmec, lugarc):
+    condicao = True
+    p = 0
+    for i in cinema:
+        lotação, ocupados, filme = i
+        if filme == filmec:
+            while p < len(ocupados):
+                if lugarc == ocupados[p]:
+                    condicao = False
+                    print("Lugar Já Ocupado")
+                p = p + 1
+    return condicao
+
+def vendebilhete(cinema, filmec, lugarc):
+    for i in cinema:
+        lotação, ocupados, filme = i
+    if disponivel(cinema, filmec, lugarc):
+       if len(ocupados) < lotação:
+        ocupados.append(lugarc)
+    return cinema
+
+def listardisponibilidades(cinema, sala):
+    for i in cinema:
+        lotação, ocupados, filme = i
+        num = lotação - len(ocupados)
+    for i in cinema:
+        i = sala
+    print("Na sala", i , "está a ser exibido", filme)
+    print("e existem", num , "lugares disponíveis")  
+
+def inserirSala(cinema, salanova):
+    cineman = []
+    for i in cinema:
+        cineman.append(i)
+    if salanova not in cineman:
+        cineman.append(salanova)
+    return cineman
+
+print("Bem vindo(a)! Digita o número correspondente á ação que queres realizar: \n (1) Ver lista de todos os filmes em exibição; \n (2) Verificar se o lugar que pretende está ocupado; \n (3) Escolher lugar; \n (4) Verificar número de lugares disponíveis para cada filme; \n (5) Acrescentar sala a cinema; \n (0) Sair ")
+N = int(input("Escolha uma opção: "))
+
+if N < 0:
+    print("Resultado inválido. Resultado deve ser um valor positivo")
+    N = int(input("Escolha uma opção: "))
+
+if N == 1:
+    print(listar(cinema1))
+    print("---")
+    print(listar(cinema2))
+    print("---")
+    print(listar(cinema3))
+    N = int(input("Escolha uma opção:"))
+
+if N == 2:
+    print(disponivel (cinema2, "Avatar", 7))
+    N = int(input("Escolha uma opção: "))
+
+if N == 3:
+    print(vendebilhete(cinema2, "Minions", 9))
+    N = int(input("Escolha uma opção: "))
+
+if N ==4:
+    print(listardisponibilidades(cinema1, 1))
+    print(listardisponibilidades(cinema2, 4))
+    N = int(input("Escolha uma opção: "))
+
+if N == 5:
+    print(inserirSala(cinema1, sala5))
+    N = int(input("Escolha uma opção: "))
+
+if N == 0:
+    print("Está de saída. Obrigada!")
+
+if N > 5:
+    print("Resultado inválido. Resultado deve ser menor que 5")
+    N = int(input("Escolha uma opção: "))
