@@ -1,0 +1,405 @@
+def LerFile():
+    file = open("myheart.csv", "r")
+    lista = []
+    for linha in file:
+        campos = linha.split(",")
+        lista.append(campos)
+    print(lista)
+
+def distribSexo():
+    a = int(input("Se quer ver a distribuição da doença no sexo masculino digite '1'; se quiser ver a mesma no sexo feminino, digite '2"))
+    i = 0
+    n = 0
+    file = open("myheart.csv", "r")
+    if a == 1:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if str(sexo) == "M":
+                    i = i + 1
+            if str(sexo) == "M":
+                n = n + 1
+        print("A distribuição relativa ao sexo masculino é", (i/n)*100, "%")
+    if a == 2:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if str(sexo) == "F":
+                    i = i + 1 
+            if str(sexo) == "F":
+                n = n + 1
+        print("A distribuição relativa ao sexo feminino é", (i/n)*100, "%")
+
+def distribIdade():
+    print("Escolha o escalão etária onde quer visualizar a distribuição: \n (1) [30-34] \n (2) [35-39] \n (3) [40-44] \n (4) [45-49] \n (5) [50-54] \n (6) [55-59] \n (7) [60-64] \n (8) [65-69] \n (9) [70-74] \n (10) [75-79] \n (11) [80-84] \n (12) [85-89] \n (13) [90-94] \n (14) [95-99]")
+    a = int(input("Digite o número correspondente á sua escolha :"))
+    i = 0
+    file = open("myheart.csv", "r")
+    if a == 1:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(idade) in range(30,35):
+                    i = i + 1
+    if a == 2:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(idade) in range(35,40):
+                    i = i + 1
+    if a == 3:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(idade) in range(40,45):
+                    i = i + 1
+    if a == 4:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(idade) in range(45,50):
+                    i = i + 1
+    if a == 5:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(idade) in range(50,55):
+                    i = i + 1
+    if a == 6:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(idade) in range(55,60):
+                    i = i + 1
+    if a == 7:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(idade) in range(60,65):
+                    i = i + 1
+    if a == 8:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(idade) in range(65,70):
+                    i = i + 1
+    if a == 9:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(idade) in range(70,75):
+                    i = i + 1
+    if a == 10:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(idade) in range(75,80):
+                    i = i + 1
+    if a == 11:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(idade) in range(80,85):
+                    i = i + 1
+    if a == 12:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(idade) in range(85,90):
+                    i = i + 1
+    print("A distribuição da doença no escalão etário escolhido é de", i, "casos")
+
+def distribCol(): # 0 99 600
+    print("Escolha o nível de colestrol onde quer visualizar a distribuição: \n (1) [90-99] \n (2) [100-109] \n (3) [110-119] \n (4) [120-129] \n (5) [130-139] \n (6) [140-149] \n (7) [150-159] \n (8) [160-169] \n (9) [170-179] \n (10) [180-189] \n (11) [190-199] \n (12) [200-209] \n (13) [210-219] \n (14) [220-229] \n (15) [230-239] \n (16) [240-249] \n (17) [250-259] \n (18) [260-269] \n (19) [270-279] \n (20) [280-289] \n (21) [290-299] \n (22) [300-309] \n (23) [310-319] \n (24) [320-329] \n (25) [330-339] \n (26) [340-349] \n (27) [350-359] \n (28) [360-369] \n (29) [370-379] \n (30) [380-389] \n (31) [390-399] \n (32) [400-409] \n (33) [410-419] \n (34) [420-429] \n (35) [430-439] \n (36) [440-449] \n (37) [450-459] \n (38) [460-469] \n (39) [470-479] \n (40) [480-489] \n (41) [490-499] \n (42) [500-509]")
+    a = int(input("Digite o número correspondente á sua escolha :"))
+    i = 0
+    file = open("myheart.csv", "r")
+    if a == 1:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(90,100):
+                    i = i + 1
+    if a == 2:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(100,110):
+                    i = i + 1
+    if a == 3:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(110,120):
+                    i = i + 1
+    if a == 4:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(120,130):
+                    i = i + 1
+    if a == 5:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(130,140):
+                    i = i + 1
+    if a == 6:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(140,150):
+                    i = i + 1
+    if a == 7:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(150,160):
+                    i = i + 1
+    if a == 8:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(160,170):
+                    i = i + 1
+    if a == 9:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(170,180):
+                    i = i + 1
+    if a == 10:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(180,190):
+                    i = i + 1
+    if a == 11:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(190,200):
+                    i = i + 1
+    if a == 12:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(200,210):
+                    i = i + 1
+    if a == 13:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(210,220):
+                    i = i + 1
+    if a == 14:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(220,230):
+                    i = i + 1
+    if a == 15:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(230,240):
+                    i = i + 1
+    if a == 16:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(240,250):
+                    i = i + 1
+    if a == 17:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(250,260):
+                    i = i + 1
+    if a == 18:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(260,270):
+                    i = i + 1
+    if a == 19:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(270,280):
+                    i = i + 1
+    if a == 20:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(280,290):
+                    i = i + 1
+    if a == 21:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(290,300):
+                    i = i + 1
+    if a == 22:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(300,310):
+                    i = i + 1
+    if a == 23:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(310,320):
+                    i = i + 1
+    if a == 24:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(320,330):
+                    i = i + 1
+    if a == 25:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(330,340):
+                    i = i + 1
+    if a == 26:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(340,350):
+                    i = i + 1
+    if a == 27:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(350,360):
+                    i = i + 1
+    if a == 28:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(360,370):
+                    i = i + 1
+    if a == 29:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(370,380):
+                    i = i + 1
+    if a == 30:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(380,390):
+                    i = i + 1
+    if a == 31:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(390,400):
+                    i = i + 1
+    if a == 32:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(400,410):
+                    i = i + 1
+    if a == 33:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(410,420):
+                    i = i + 1
+    if a == 34:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(420,430):
+                    i = i + 1
+    if a == 35:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(430,440):
+                    i = i + 1
+    if a == 36:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(440,450):
+                    i = i + 1
+    if a == 37:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(450,460):
+                    i = i + 1
+    if a == 38:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(460,470):
+                    i = i + 1
+    if a == 39:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(470,480):
+                    i = i + 1
+    if a == 40:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(480,490):
+                    i = i + 1
+    if a == 41:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(490,500):
+                    i = i + 1
+    if a == 42:
+        for linha in file:
+            idade, sexo, tensão, colesterol, batimento, temDoenca = linha.split(",")
+            if str(temDoenca) == "1\n":
+                if int(colesterol) in range(500,510):
+                    i = i + 1
+    print("A distribuição da doença no nível de colestrol escolhido é de", i, "casos")
+
+# posso ter uma string no input? e depois dizer if a = batimento?  
+
+
+
+
+def criarTabela():
+    file = open("myheart.csv", "r")
+    distribIdade()
+    return
+
+
+print("Escolha o que pretende executar: \n (1) Ler Ficheiro \n (2) Distribuição da doença por sexo \n (3) Distribuição da doença por escalões etários \n (4) Distribuição da doença por níveis de colesterol \n (5) Distribuições por tabela")
+N = int(input("Escolha o que pretende fazer: "))
+if N == 0:
+    print("Está a sair do menu. Obrigada")
+if N == 1:
+    LerFile()
+    N = int(input("Escolha o que pretende fazer: "))
+if N == 2:
+    distribSexo()
+    N = int(input("Escolha o que pretende fazer: "))
+if N == 3:
+    distribIdade()
+    N = int(input("Escolha o que pretende fazer: "))
+if N == 4:
+    distribCol()
+    N = int(input("Escolha o que pretende fazer: "))
+if N == 5:
+    criarTabela()
+    N = int(input("Escolha o que pretende fazer: "))
+if N < 0:
+    print("Número inserido deve ser maior ou igual a 0")
+if N > 5:
+    print("Número inserido deve ser menor ou igual a 5")
+    N = int(input("Escolha o que pretende fazer: "))
