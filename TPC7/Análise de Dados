@@ -1,11 +1,6 @@
-# modelo: [(nome, desc, periodo, duracao,_id)]
-#se nao estiver na msm pasta que python: file=open("../datasets/obras.csv"); dois pontos faz sair da pasta em que estou e datasets seria a paste onde tenho guardado o python
-#a biblioteca que vou usar é a biblioteca csv
-# #tenho de encontrar onde separo os tuplos uns dos outros mas parece dificil logo usamos uma biblioteca
 import csv
 from multiprocessing import Value
 
-# ler a obra é fazer isto::: fazer open e criar os tuplos!
 def lerObras():
     file = open("obras.csv", encoding="UTF8") #knd vai transformar bits em strings tenho de usar o mesmo que quando foi criado o código
     file.readline()
