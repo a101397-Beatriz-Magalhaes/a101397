@@ -1,0 +1,148 @@
+# modelo: [(nome, desc, periodo, duracao,_id)]
+#se nao estiver na msm pasta que python: file=open("../datasets/obras.csv"); dois pontos faz sair da pasta em que estou e datasets seria a paste onde tenho guardado o python
+#a biblioteca que vou usar é a biblioteca csv
+# #tenho de encontrar onde separo os tuplos uns dos outros mas parece dificil logo usamos uma biblioteca
+import csv
+from multiprocessing import Value
+
+# ler a obra é fazer isto::: fazer open e criar os tuplos!
+def lerObras():
+    file = open("obras.csv", encoding="UTF8") #knd vai transformar bits em strings tenho de usar o mesmo que quando foi criado o código
+    file.readline()
+    csv_file = csv.reader(file, delimiter=";")
+    
+    
+    
+    lista = []
+    for linha in csv_file:
+        lista.append(tuple(linha))
+    return lista
+
+def contarObras(obras):
+    return(len(lista))
+
+#unpack so se faz para tuplos, nao para listas
+def imprimeObras(lista):
+    for obras in lista:
+        nome, desc, ano, periodo, compositor, duracao, id = obras
+        # print(nome, desc, compositor, ano)
+        print(f"{nome[:10]:10}  |  {desc[:25]:10}   |   {compositor[:30]:30}   |   {ano:10}")
+
+
+def ordemTit(tuplo):
+    return tuplo[0]
+
+def OrdenaTit(obras):
+    lista = []
+    for nome, _, ano, *_ in obras:
+        lista.append((nome, ano))
+    
+    lista.sort(key = ordemTit)
+    return lista
+
+
+def ordemAno(tuplo):
+    return tuplo[1]
+
+def OrdenaAnos(obras):
+    lista = []
+    for nome, _, ano, *_ in obras:
+        lista.append((nome, ano))
+    
+    lista.sort(key = ordemAno)
+    return lista
+
+def OrdemNome(compositor):
+    return compositor[0]
+
+def OrdenaComp(obras):
+    lista = []
+    for _, _, _, _, compositor, _, _ in obras:
+        lista.append(compositor)
+    
+    lista.sort(key=OrdemNome)
+    return lista
+
+def DistribPerido(obras):
+    dic = {}
+    for _, _, _, periodo, *_ in obras:
+        if periodo in dic.keys():
+            dic[periodo] = dic[periodo] + 1
+        else:
+                dic[periodo] = 1
+    return dic
+
+def ordenaValores(v):
+    return v[0]
+
+def DistribAno(obras):
+    dic = {}
+    for _, _, ano, *_ in obras:
+        if ano in dic.keys():
+            dic[ano] = dic[ano] + 1
+        else:
+            dic[ano] = 1
+    valores = list(dic)
+    valores.sort(key = ordenaValores)
+    return dic
+
+def DistribComp(obras):
+    dic = {}
+    for *_, compositor, _, _ in obras:
+        if compositor in dic.keys():
+            dic[compositor] = dic[compositor] + 1
+        else:
+            dic[compositor] = 1
+    return dic
+
+def RecebDistrib(obras):
+    print("Digita 1 para ver Compositores, 2 para os períodos, 3 para Anos")
+    e = int(input("Escolha a distrib a ver: "))
+    height = []
+    if e == 1:
+        NovaDi = list(DistribComp(obras).keys())
+        NovosVal = list(DistribComp(obras).values())
+        import matplotlib.pyplot as plt
+        for t in NovosVal:
+            height.append(t)
+        left = [x for x in range(1, len(NovaDi) + 1)]
+        plt.bar(left, height, tick_label = NovaDi, width = 0.2, color = ['red'])
+        x = plt.show()
+    if e == 2:
+        NovaDi = list(DistribPerido(obras).keys())
+        NovosVal = list(DistribPerido(obras).values())
+        import matplotlib.pyplot as plt
+        for t in NovosVal:
+            height.append(t)
+        left = [x for x in range(1, len(NovaDi) + 1)]
+        plt.bar(left, height, tick_label = NovaDi, width = 0.2, color = ['red'])
+        x = plt.show()
+    if e == 3:
+        NovaDi = list(DistribAno(obras).keys())
+        NovosVal = list(DistribAno(obras).values())
+        import matplotlib.pyplot as plt
+        for t in NovosVal:
+            height.append(t)
+        left = [x for x in range(1, len(NovaDi) + 1)]
+        plt.bar(left, height, tick_label = NovaDi, width = 0.2, color = ['red'])
+        x = plt.show()
+    return x
+
+def CompObra(obras):
+    lista = []
+    lista2 = []
+    for nome, *_, compositor, _, _ in obras:
+        lista2.append(nome)
+        tupple = (compositor, lista2)
+        lista.append(tupple)
+    return lista
+
+def Visualizar(obras):
+    height = []
+    import matplotlib.pyplot as plt
+    for t in nome:
+        height.append(t)
+    left = [x for x in range(1, len(CompObra(obras)) + 1)]
+    plt.bar(left, height, tick_label = CompObra(obras), width = 0.2, color = ['red'])
+    x = plt.show()
+    return x
