@@ -1,0 +1,115 @@
+import csv
+
+def LerAlunos():
+    file = open("alunos.csv", encoding="UTF8")
+    file.readline()
+    csv_file = csv.reader(file, delimiter=',')
+
+    lista = []
+    for aluno in csv_file:
+        lista.append(tuple(aluno))
+    return lista
+
+def DistCurso(alunos):
+    dic = {}
+    for _, _, curso, *_ in alunos:
+        if curso in dic.keys():
+            dic[curso] = dic[curso] + 1
+        else:
+            dic[curso] = 1
+    return dic
+
+def Media(alunos):
+    lista = []
+    for id_aluno,nome,curso, tpc1, tpc2, tpc3, tpc4 in alunos:
+        media = (float(tpc1) + float(tpc2) + float(tpc3) + float(tpc4)) / 4
+        ap = id_aluno,nome,curso, tpc1, tpc2, tpc3, tpc4, media
+        lista.append(ap)
+    return lista
+
+def Escalao(alunos):
+    lista = []
+    Media(alunos)
+    for *_, media in alunos:
+        if int(media) >= 1 and int(media) <= 4:
+            ap = *_, media, "E"
+            lista.append(ap)
+        if int(media) >= 5 and int(media) <= 8:
+            ap = *_, media, "D"
+            lista.append(ap)
+        if int(media) >= 9 and int(media) <= 12:
+            ap = *_, media, "C"
+            lista.append(ap)
+        if int(media) >= 13 and int(media) <= 16:
+            ap = *_, media, "B"
+            lista.append(ap)
+        if int(media) >= 17 and int(media) <= 20:
+            ap = *_, media, "A"
+            lista.append(ap)
+    return lista
+
+# def DistEscalao(alunos):
+    Escalao(alunos)
+    limites = [(n, n + 3) for n in range(1, 20, 4)]
+    for *_, media in alunos:
+        if media in dic.keys():
+            if int(media) >= 1 and int(media) <= 4:
+                dic[media] = dic[media] + 1
+            if int(media) >= 5 and int(media) <= 8:
+                dic[media] = dic[media] + 1
+            if int(media) >= 9 and int(media) <= 12:
+                dic[media] = dic[media] + 1
+            if int(media) >= 13 and int(media) <= 16:
+                dic[media] = dic[media] + 1
+            if int(media) >= 17 and int(media) <= 20:
+                dic[media] = dic[media] + 1
+    return dic
+            
+def DistEscalao(alunos):
+    Escalao(alunos)
+    dic = {}
+    limites = [(n, n + 3) for n in range(1, 21, 4)]
+    for *_, media in alunos:
+        for limite in limites:
+            if int(media) >= limite[0] and int(media) <= limite[1]:
+                if limite in dic:
+                    dic[limite] = dic[limite] + 1
+                else:
+                    dic[limite] = 1
+    return dic
+
+def grafLinhas(alunos):
+    import matplotlib.pyplot as plt
+    x = ["A", "B", "C", "D", "E"]
+    y = [28, 32, 32, 8 ,0]
+    plt.plot(x,y)
+    plt.show()
+
+def Lista(alunos):
+    for id_aluno, nome, curso, tpc1, tpc2, tpc3, tpc4 in alunos:
+        print(f"| {id_aluno[:20]:8} | {nome[:25]:35} | {curso:15} | {tpc1[:15]:8} | {tpc2[:15]:8} | {tpc3[:15]:8} | {tpc4[:15]:8}")
+
+def Menu(alunos):
+    print("Bem vindo(a) ao menu! Escolha a opção:")
+    N = int(input("Opção: "))
+    if N == 0:
+        print("Saiu")
+        N = int(input("Opção: "))
+    if N == 1:
+        DistCurso(alunos)
+        N = int(input("Opção: "))
+    if N == 2:
+        Media(alunos)
+        N = int(input("Opção: "))
+    if N == 3:
+        Escalao(alunos)
+        N = int(input("Opção: "))
+    if N == 3:
+        DistEscalao(alunos)
+        N = int(input("Opção: "))
+    if N == 3:
+        grafLinhas(alunos)
+        N = int(input("Opção: "))
+    if N == 3:
+        Lista(alunos)
+        N = int(input("Opção: "))
