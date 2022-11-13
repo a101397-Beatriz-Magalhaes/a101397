@@ -1,0 +1,154 @@
+def inicDiferente(s1, s2):
+    res = 0
+    for palavra in s1:
+        palavra = palavra.lower()
+        for letra in palavra:
+            if letra not in s2:
+                res = res + 1
+    return res
+    
+    .
+    
+    def acimaMedia(n):
+    i = 0
+    res = 0
+    media = 0
+    lista1 = []
+    numeroTotal = 0
+    while i < n:
+        x = random.randint(-1000, 1000)
+        lista1.append(x)
+        i = i + 1
+    for numero in lista1:
+        numeroTotal = numeroTotal + numero
+    media = numeroTotal / n
+    for n in lista1:
+        if n > media:
+            res = res + 1
+    return res
+    
+   .
+   
+   def CriaF(l1,l2):
+    l3 = []
+    for n in l1:
+        l3.append(n)
+    for n in l2:
+        l3.append(n)
+    print(l3)
+    return l3
+
+def merge(l1, l2):
+    l3 = CriaF(l1,l2)
+    i = 1
+    j = 0
+    while j < len(l3):
+        while i < len(l3):
+            if l3[i - 1] > l3[i]:
+                l3[i], l3[i - 1] = l3[i-1], l3[i]
+            i = i + 1
+        j = j + 1
+    return l3
+    
+    .
+    
+    def figuais(f1, f2):
+    var = False
+    i = 0
+    listaA = []
+    listaB = []
+    file1 = open ("texto1.txt", "r")
+    for linha in file1:
+        listaA.append(linha)
+    print(listaA)
+    file2 = open ("texto2.txt", "r")
+    for linha in file2:
+        listaB.append(linha)
+    print(listaB)
+    while i < len(listaA):
+        if listaA[i] == listaB[i]:
+            var = True
+        else:
+            var = False
+        i = i + 1
+    return var
+    
+    .
+    
+    def atores(cinemateca):
+    lista2 = []
+    for filme in cinemateca:
+        *_, elenco, _= filme
+        for ator in elenco:
+            lista2.append(ator)
+    lista2.sort()
+    return lista2
+    
+    .
+    
+    def listarPorGenero(cinemateca, generoe):
+    lista1 = []
+    for filme in cinemateca:
+        titulo, *_, genero = filme
+        for i in genero:
+            if i == generoe:
+                lista1.append(titulo)
+    lista1.sort()
+    return lista1
+    
+    .
+    
+    def maiorElenco(cinemateca):
+    dic = {}
+    for filme in cinemateca:
+        titulo, _, elenco, _ = filme
+        for ator in elenco:
+            if titulo in dic:
+                dic[titulo] += 1
+            else:
+                dic[titulo] = 1
+    maximo = max(dic, key=dic.get)
+    print(maximo)
+    
+    .
+    
+    
+    def filmePorGenero( cinemateca ):
+    dic = {}
+    for filme in cinemateca:
+        *_, genero = filme
+        for i in genero:
+            if i in dic:
+                dic[i] += 1
+            else:
+                dic[i] = 1
+    return dic
+
+.
+
+def Graf(cinemateca):
+    import matplotlib.pyplot as plt
+
+    distrib = filmePorGenero(CineUM)
+
+    left = [x for x in range(1, len(distrib)+1)]
+    height = []
+
+    paises = list(distrib.keys())
+    for p in paises:
+            height.append(distrib[p])
+    
+    plt.bar(left, height, tick_label = paises,
+            width = 0.5, color = ['pink', 'yellow'])
+    
+    plt.xlabel('Géneros')
+    plt.ylabel('Quantidade')
+    plt.title('Géneros disponíveis em', cinemateca)
+
+    plt.show()
+
+
+    
+    
+    
+   
